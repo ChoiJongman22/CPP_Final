@@ -15,26 +15,87 @@ using namespace std;
 //코드는 프로그램의 명령어나 기계어 명령이 존재한다.
 
 //C++에서는 동적할당시 new를 해제시 delete를 사용한다.
-#include <iostream>
-using namespace std;
-
-int main(void) {
-    int* p = new int[5];
-
-    for (int i = 0; i < 5; i++) {
-        p[i] = i + 1;
-    }
-    for (int i = 0; i < 5; i++) {
-        cout << p[i] << "\n";
-    }
-    delete[] p;
-    return 0;
-}
 
 
+//int main(void) {
+//    int* p = new int[5];
+//
+//    for (int i = 0; i < 5; i++) {
+//        p[i] = i + 1;
+//    }
+//    for (int i = 0; i < 5; i++) {
+//        cout << p[i] << "\n";
+//    }
+//    delete[] p;
+//    return 0;
+//}
 
 
+//void main() {
+//	char* str;
+//	str = new char[1000];
+//	if (str == NULL) {
+//		cout << "Insuffcient memory available" << endl;
+//	}
+//	else {
+//		cout << "Allocated 1000 bytes" << endl;
+//		delete[] str;
+//		cout << "Memory freed" << endl;
+//	}
+//}
 
+
+//2차원 동적할당(배열안에 배열)
+
+//int** alloc2DInt(int rows, int cols) {
+//	if (rows <= 0 || cols <= 0) { return NULL; }
+//
+//	int** mat = new int* [rows];
+//	for (int i = 0; i < rows; i++) {
+//		mat[i] = new int[cols];
+//	}
+//	return mat;
+//}
+//
+//void free2DInt(int** mat, int rows, int cols = 0) {
+//	if (mat != NULL) {
+//		for (int i = 0; i < rows; i++) {
+//			delete[] mat[i];
+//		}
+//		delete[] mat;
+//	}
+//}
+//
+//void set2DRandom(int** mat, int rows, int cols) {
+//	for (int i = 0; i < rows; i++) {
+//		for (int j = 0; j < cols; j++) {
+//			mat[i][j] = rand() % 100;
+//		}
+//	}
+//}
+//
+//void print2DInt(int** mat, int rows, int cols) {
+//	cout << "행의 수 : " << rows << " 열의 수 : " << cols;
+//	for (int i = 0; i < rows; i++) {
+//		for (int j = 0; j < cols; j++) {
+//			cout << mat[i][j];
+//		}
+//		cout << endl;
+//	}
+//}
+//
+//
+//void main() {
+//	int** mat;
+//	int rows, cols;
+//
+//	cout << "행과 열의 크기를 입력하세요." << endl;
+//	cin >> rows >> cols;
+//	mat = alloc2DInt(rows, cols);
+//	set2DRandom(mat, rows, cols);
+//	print2DInt(mat, rows, cols);
+//	free2DInt(mat, rows, cols);
+//}
 
 //생성자 사용해보기
 //class Person {
@@ -170,5 +231,33 @@ int main(void) {
 //	B.printPerson();
 //}
 
+//연산자 오버로딩
+
+class Point {
+private:
+	int x;
+	int y;
+public:
+	Point(int a = 0, int b = 0) {
+		x = a;
+		y = b;
+	}
+	Point operator+(Point p) {
+		Point tmp;
+		tmp.x = x + p.x;
+		tmp.y = y + p.y;
+		return tmp;
+	}
+
+	void show() {
+		cout << "x: " << x << " y: " << y << endl;
+	}
+};
 
 
+int main() {
+	Point p1(1, 2);
+	Point p2(3, 4);
+	p1 = p1 + p2;
+	p1.show();
+}
