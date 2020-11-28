@@ -19,7 +19,6 @@ using namespace std;
 
 //int main(void) {
 //    int* p = new int[5];
-//
 //    for (int i = 0; i < 5; i++) {
 //        p[i] = i + 1;
 //    }
@@ -33,6 +32,7 @@ using namespace std;
 
 //void main() {
 //	char* str;
+//
 //	str = new char[1000];
 //	if (str == NULL) {
 //		cout << "Insuffcient memory available" << endl;
@@ -47,7 +47,7 @@ using namespace std;
 
 //2차원 동적할당(배열안에 배열)
 
-//int** alloc2DInt(int rows, int cols) {
+//int** alloc2dint(int rows, int cols) {
 //	if (rows <= 0 || cols <= 0) { return NULL; }
 //
 //	int** mat = new int* [rows];
@@ -57,8 +57,8 @@ using namespace std;
 //	return mat;
 //}
 //
-//void free2DInt(int** mat, int rows, int cols = 0) {
-//	if (mat != NULL) {
+//void free2dint(int** mat, int rows, int cols = 0) {
+//	if (mat != null) {
 //		for (int i = 0; i < rows; i++) {
 //			delete[] mat[i];
 //		}
@@ -66,7 +66,7 @@ using namespace std;
 //	}
 //}
 //
-//void set2DRandom(int** mat, int rows, int cols) {
+//void set2drandom(int** mat, int rows, int cols) {
 //	for (int i = 0; i < rows; i++) {
 //		for (int j = 0; j < cols; j++) {
 //			mat[i][j] = rand() % 100;
@@ -74,7 +74,7 @@ using namespace std;
 //	}
 //}
 //
-//void print2DInt(int** mat, int rows, int cols) {
+//void print2dint(int** mat, int rows, int cols) {
 //	cout << "행의 수 : " << rows << " 열의 수 : " << cols;
 //	for (int i = 0; i < rows; i++) {
 //		for (int j = 0; j < cols; j++) {
@@ -91,10 +91,10 @@ using namespace std;
 //
 //	cout << "행과 열의 크기를 입력하세요." << endl;
 //	cin >> rows >> cols;
-//	mat = alloc2DInt(rows, cols);
-//	set2DRandom(mat, rows, cols);
-//	print2DInt(mat, rows, cols);
-//	free2DInt(mat, rows, cols);
+//	mat = alloc2dint(rows, cols);
+//	set2drandom(mat, rows, cols);
+//	print2dint(mat, rows, cols);
+//	free2dint(mat, rows, cols);
 //}
 
 //생성자 사용해보기
@@ -177,14 +177,18 @@ using namespace std;
 //
 //void main() {
 //	Person A(28, "Jongman");
-//	Person B = A; 
+//	
+//	Person B(A);
 //
 //	A.age = 21;
 //	strcpy(A.name, "종만이");
+//	
 //
 //	A.printPerson();
 //	B.printPerson();
 //}
+
+
 
 
 //깊은 복사
@@ -219,7 +223,7 @@ using namespace std;
 //		cout << "나이: " << age << endl;
 //	}
 //};
-//	
+	
 //void main() {
 //	Person A(28, "Jongman");
 //	Person B = A; 
@@ -233,17 +237,17 @@ using namespace std;
 
 //연산자 오버로딩
 
-class Point {
+class point {
 private:
 	int x;
 	int y;
 public:
-	Point(int a = 0, int b = 0) {
+	point(int a = 0, int b = 0) {
 		x = a;
 		y = b;
 	}
-	Point operator+(Point p) {
-		Point tmp;
+	point operator+(point p) {
+		point tmp;
 		tmp.x = x + p.x;
 		tmp.y = y + p.y;
 		return tmp;
@@ -254,10 +258,12 @@ public:
 	}
 };
 
-
 int main() {
-	Point p1(1, 2);
-	Point p2(3, 4);
+	point p1(1, 2);
+	point p2(3, 4);
 	p1 = p1 + p2;
 	p1.show();
 }
+
+
+//연산자 오버로딩을 사용해서 문자열 합치는 거 해봅시다.
